@@ -1,0 +1,11 @@
+.DS_Store
+.project
+log/*.log
+tmp/**/*
+db/*.sqlite3
+public/cache/**/*
+doc/api/*
+doc/app/*
+coverage 
+.idea
+*~
