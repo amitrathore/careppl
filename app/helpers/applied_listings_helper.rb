@@ -1,0 +1,2 @@
+module AppliedListingsHelper
+end

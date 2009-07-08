@@ -1,0 +1,10 @@
+<p>AllListings</p>
+
+<% @listings.each do |listing| %>
+	<%= listing.id %> == <%= current_user.id %>
+	<% if listing.user_id != current_user.id %>
+		<p><%= listing.title %><%= listing.body %></p>
+	<% end %>
+<% end %>
+
+<%= Listing.display %>

@@ -1,0 +1,105 @@
+#header{
+  position: relative; top: 0px; left: 40%;
+  width: 100%;
+}
+#header h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+#header h2 {
+  color: #888;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+#container {
+  background-color: #95e112;
+}
+
+body {
+  
+}
+
+#content {
+  width: 425px;
+  margin-left: 40px;
+  
+}
+
+#login {  
+  width: 499px;
+  margin-left: 40px;
+  margin-top: -5px;
+  height: 422px;
+  background-image: url(/images/login_bg.png);
+  font-weight: bold;
+  color: #A33;
+  position: relative;
+}
+#login_button{
+  background-image: url(/images/button.png);
+}
+
+#small_box {
+  position: relative; top:0px;
+  width: 229px;
+  height: 194px;
+  margin-top: 0px;
+  margin-left: 50px;
+  background-image: url(/images/signup_bg2.png);
+  text-align: center;
+}
+#content_small_box{
+  position: relative; top:70px;
+  text-align: center;
+}
+#content_signup{
+  position: relative;
+}
+
+.create_account a{
+    text-decoration: none;
+}
+.create_account a:visited{
+    color: blue;
+}
+.create_account a:hover{
+    text-decoration: underline;
+}
+
+.textInput, .text_field, .password_field {
+    margin-left: 50px;
+	color: #7c7c7c;
+	line-height: 1em;
+	padding: 4px;
+}
+.textArea, .text_field, .password_field {
+	border: 2px solid #999;
+	padding: 4px;
+	background-color: #f3f3f3;	
+	font-weight: bold;
+}
+.button{
+    background-image: url(/images/button.png);
+    width: 100px;
+    height: 44px;
+    margin-left: 50px;
+    font-weight: bold;
+    color: white;
+}
+.link_acc{
+    background-image: url(/images/link_acc_button.png);
+    width: 200px;
+    height: 88px;
+    color: black;
+}
+.link_img{
+    margin-left: 10px;
+}
+img{
+    border-style: none;
+}
+button{
+    border-style: none;
+}

@@ -1,0 +1,20 @@
+<div id="login">
+<table>
+<tr>
+<td>
+<div id="content">
+<p>Create your Organization account here!</p>
+<%= error_messages_for :user %>
+<% form_for :user do |f| -%>
+<%= f.hidden_field :account_type, :value => 'organization' %>
+<%= render(:partial => "signup" , :object => f)%>
+<% end -%>
+</td>
+<td>
+<div id="small_box"><p id="content_small_box"><%= link_to(image_tag("/images/back.gif"),{ :controller => :account, :action => :login }, :class => 'link_img') %></p></div>
+<div id = "small_box"><p id="content_small_box"><%= link_to(image_tag("/images/create_user_account.gif"),{ :action => :signup_individual}, :class => 'link_acc') %></p></div>
+</td>
+</tr>
+</table>
+</div>
+</div>

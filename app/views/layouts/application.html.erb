@@ -1,0 +1,7 @@
+<h3> Careppl, Inc. </h3>
+<%= link_to 'Home' , :controller => '/listings', :action => :index %>
+<%= link_to 'Create' , :controller => '/listings', :action => :create %>
+<%= link_to 'View All Listings', :controller => '/listings', :action => :all_listings %>
+<%= link_to 'Logout' , :controller => '/account', :action => :logout %>
+
+<%= yield %>

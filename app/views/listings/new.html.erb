@@ -1,0 +1,15 @@
+
+    <h2>Write a new Listing</h2>  
+      
+    <% form_for :listing do |listing_form| %>  
+     <p>     
+       <label for="title" class="textInput">Title:</label>  
+       <%= listing_form.text_field :title %>  
+     </p>  
+     <p>  
+       <label for="body" class="textInput">Body:</label><br />  
+       <%= listing_form.text_area :body %>  
+     </p>  
+     <%= listing_form.hidden_field :user_id, :value => current_user[:id] %>
+   <%= submit_tag 'Create Listing'%>  
+   <% end %> 

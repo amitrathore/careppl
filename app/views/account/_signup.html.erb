@@ -1,0 +1,15 @@
+<% form_for :user do |f| -%>
+<p><label for="login" class="textInput">Login:</label><br/>
+<%= f.text_field :login %></p>
+
+<p><label for="email" class="textInput">Email:</label><br/>
+<%= f.text_field :email %></p>
+
+<p><label for="password" class="textInput">Password:</label><br/>
+<%= f.password_field :password %></p>
+
+<p><label for="password_confirmation" class="textInput">Confirm Password:</label><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><%= submit_tag 'Sign up' %></p>
+<% end -%>

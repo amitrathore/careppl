@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<%= stylesheet_link_tag "login", :media => "all" %>
+<title>CarePpl</title>
+
+<body id = "container">
+			<div id="header">
+				<table>
+					<tr>
+						<td><%= image_tag("rails.png") %></td>
+						<td><h1>CarePpl</h1>
+							<h2>The Do Good Website!</h2>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<p style="color: green"><%= flash[:notice] %></p>
+			<%= yield %>
+	
+</body>
+</html>
+

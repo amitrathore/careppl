@@ -1,0 +1,30 @@
+<div id="login">
+<table>
+<tr>
+<td>
+<div id="content">
+<p>Sign in with your account!</p><br/>
+	<% form_tag do -%>
+	<p class="textInput"><label for="login">Login:</label><br/><br/>
+	<input type="text" class="textArea" name="login" id="user_login" size="30" value=""/></p>
+
+	
+	<p class="textInput"><label for="password">Password:</label><br/><br/>
+	<input type="password" class="textArea" name="password" id="user_password" size="30"/></p>
+	
+	
+	<!-- Uncomment this if you want this functionality
+	<p><label for="remember_me">Remember me:</label>
+	<%= check_box_tag 'remember_me' %></p>
+	-->
+	
+	<input type="submit" name="Log in" value="Log in" class="button eighty" />
+	<% end -%>
+</div>
+</td>
+<td>
+</div>
+<div id = "small_box"><p id="content_small_box"><%= link_to(image_tag("/images/create_user_account.gif"),{ :action => :signup_individual}, :class => 'link_acc') %></p></div>
+<div id= "small_box"><p id="content_small_box"><%= link_to(image_tag("/images/create_organization_account.gif"),{ :action => :signup_organization }, :class => 'link_acc') %></p></div>
+</td>
+</tr>
