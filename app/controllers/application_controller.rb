@@ -9,4 +9,6 @@ class ApplicationController < ActionController::Base
   
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  before_filter :login_required, :except => [:login, :signup_individual,:signup_organization, :logout]
+  before_filter :login_from_cookie
 end

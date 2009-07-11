@@ -1,7 +1,9 @@
 <h1>Welcome to CarePpl <%= @name %>!! </h1>
 <p>Your Listings</p>
-<% @listings.each do |listing| %>
-<p><%= listing.title %><%= listing.body %></p>
+<% if @listings.empty? %>
+	<p>No Listings!  <%= link_to 'Create One Now!' , listings_url, :method => :post %></p>
+<% else %>	
+	<%= render :partial => 'listing' , :collection => @listings %>
 <% end %>
 
 

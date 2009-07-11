@@ -1,5 +1,9 @@
-<p>Title:<%= @listing.title %>
-<p>Body:<%= @listing.body %>
+<%= render :partial => 'listing', :@collection => @listing %>
+
+<p><strong>People who have applied to this listing</strong></p>
+<% @applicants.each do |applicant| %>
+<p><%= h(User.find(applicant.user_id).login) %></p>
+<% end %>
 
 <%= link_to 'Back' , listings_path %>
 <%= link_to 'Edit' , edit_listing_path(@listing) %>

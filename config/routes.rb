@@ -1,5 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
+   map.all_listings '/listings/all_listings', :controller => '/listings', :action => 'all_listings'
+   map.applicants '/listings/applicants/', :controller => '/listings', :action => 'applicants'
+   #map.user_applications '/applications/index', :controller => '/applications', :action => 'index'
+   #map.resources :listings , :has_many => :applied_listings
+   #map.resources :applied_listings
+   map.resources :listings
+   map.resources :applications
+   
+   map.connect ':controller/:action/:id'
+   map.connect ':controller/:action/:id.:format'
+   
+   
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
@@ -38,7 +50,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
-  map.resources :listings
+
+
 end

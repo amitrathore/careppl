@@ -1,6 +1,6 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
-  has_many :applied_listings
+  has_many :applications
   validates_presence_of :title, :body
   
   #def self.listings_of_all_users_except (id)
@@ -9,5 +9,9 @@ class Listing < ActiveRecord::Base
   
   #def self.display
   #  listings = find(:all)
-  #end
+  #end 
+  
+  def applicants
+    return Application.find(:all, :conditions => {:listing_id => self[:id] })
+  end
 end

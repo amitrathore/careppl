@@ -24,6 +24,9 @@ class AccountController < ApplicationController
       end
       redirect_back_or_default(:controller => '/account', :action => 'index')
       flash[:notice] = "Logged in successfully"
+    else
+      flash[:notice] ="Invalid Username/Password!"
+      redirect_back_or_default(:controller => '/account', :action => 'index')
     end
   end
 

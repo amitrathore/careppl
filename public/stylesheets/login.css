@@ -29,13 +29,13 @@ body {
 
 #login {  
   width: 499px;
+  height: 422px;
   margin-left: 40px;
   margin-top: -5px;
-  height: 422px;
   background-image: url(/images/login_bg.png);
   font-weight: bold;
   color: #A33;
-  position: relative;
+  position: relative; left: 200px;
 }
 #login_button{
   background-image: url(/images/button.png);
@@ -75,6 +75,7 @@ body {
 	padding: 4px;
 }
 .textArea, .text_field, .password_field {
+	margin-left: 50px;
 	border: 2px solid #999;
 	padding: 4px;
 	background-color: #f3f3f3;	
@@ -82,10 +83,11 @@ body {
 }
 .button{
     background-image: url(/images/button.png);
-    width: 100px;
-    height: 44px;
+    width: 103px;
+    height: 46px;
     margin-left: 50px;
     font-weight: bold;
+    font-size: 11px;
     color: white;
 }
 .link_acc{

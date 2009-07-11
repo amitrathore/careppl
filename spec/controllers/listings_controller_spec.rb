@@ -2,13 +2,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ListingsController  do
 
-  describe "Get to /listings" do 
+  describe "GET to /listings" do 
       before(:each) do
         @current_user = mock_model(User)
         controller.stub!(:current_user).and_return(@current_user)
          
         @listing = mock_model(Listing)
-        Listing.stub!(:find).and_return([@listing])
+        Listing.stub!(:find).and_return(@listing)
         @params = { :id => 1,
                     :user_id => 1,
                     :title => 'Title',
@@ -19,7 +19,6 @@ describe ListingsController  do
       def do_get
         get :show, :id => 1
       end
-    
    
       it "should render the index template" do
         get :index
@@ -28,6 +27,7 @@ describe ListingsController  do
       
       it "should render the show template" do
         do_get
+        find(:all, :conditions => {:listing_id => self[:id] })
         response.should render_template('show')
       end
       
@@ -37,7 +37,7 @@ describe ListingsController  do
       end
       
       it "should find a list of all listings" do
-         Listing.should_receive(:find).with(:all, {:conditions => {:user_id => @current_user.id}}).and_return([@listing])
+         Listing.should_receive(:find).with(:all, :conditions => {:user_id => @current_user.id}, :order => 'created_at DESC').and_return([@listing])
          get :index
       end
       
@@ -58,31 +58,31 @@ describe ListingsController  do
         controller.stub!(:current_user).and_return(@current_user)
          
         @listing = mock_model(Listing)
-        Listing.stub!(:new).and_return([@listing])
-        @params = { :user_id => 1,
-                    :title => 'Title',
-                    :body => 'Body'
-                  } 
-        
+        controller.stub!(:new).and_return(@listing)
       end
       
-      
-      describe "success path" do
-      
-        it "should create a new listing" do
-          @listing.should_receive(:save).and_return(true)
-          post :create
-        end
         
-        it "should redirect to the show template" do
-   
-        end
-        
-        it "should populate the flash message" do
-        end
-        
+      it "should create new listing successfully" do
+        @listing.should_receive(:save).and_return(true)
+        Listing.should_receive(:new).with(anything()).and_return(@listing)
+        post :create
+        response.should redirect_to(listings_url) 
+        flash[:notice].should == 'Listing was successfully created!'
       end
+        
+      it "should pass the params to listing" do
+        post 'create', :listing => {:title => 'Title'}
+        assigns[:listing].title.should == 'Title'   
+      end   
     
+      it "should re-render new template on failed save" do      
+        @listing.should_receive(:save).and_return(false)
+        Listing.should_receive(:new).with(anything()).and_return(@listing)
+        post :create
+        response.should render_template(:new)
+        flash[:notice].should == nil
+      end     
+   
     end
 
 end

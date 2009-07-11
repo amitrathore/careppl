@@ -1,8 +1,8 @@
 <p>AllListings</p>
 
 <% @listings.each do |listing| %>
-	<%= listing.id %> == <%= current_user.id %>
 	<% if listing.user_id != current_user.id %>
-		<p><%= listing.title %><%= listing.body %></p>
+		<%= render :partial => 'listing', :object => listing %>
+		<%= link_to 'Apply to Listing', applications_url(:listing_id => h(listing.id)), :method => :post%></p>
 	<% end %>
 <% end %>

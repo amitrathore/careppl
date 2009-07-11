@@ -1,5 +1,4 @@
-
-    <h2>Write a new Listing</h2>  
+    <h2>Edit Listing</h2>  
       
     <% form_for @listing do |listing_form| %>  
      <p>     
@@ -8,8 +7,7 @@
      </p>  
      <p>  
        <label for="body" class="textInput">Body:</label><br />  
-       <%= listing_form.text_area :body, :class => 'textArea' %>  
+       <%= listing_form.text_area :body %>  
      </p>  
-     <%= listing_form.hidden_field :user_id, :value => current_user[:id] %>
-   <%= submit_tag 'Create Listing'%>  
+   <%= submit_tag 'Update'%>  
    <% end %> 

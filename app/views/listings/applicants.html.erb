@@ -1,0 +1,4 @@
+<strong>Listing Applicants for the listing</strong>
+<% @applications.each do |application| %>
+	<p><%= h(User.find(application.user_id).login) %></p>
+<% end %>

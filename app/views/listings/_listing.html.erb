@@ -1,0 +1,4 @@
+ <hr /> 
+ <h2><%= link_to_unless_current listing.title, listing %></h2>  
+ Posted at: <%= listing.created_at %> by <strong><%= h(User.find(listing.user_id).login) %></strong><br />  
+ <%= listing.body %>  
