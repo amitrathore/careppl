@@ -21,13 +21,13 @@ body {
   
 }
 
-#content {
-  width: 425px;
+#login {
+  width: 800px;
   margin-left: 40px;
   
 }
 
-#login {  
+#content {  
   width: 499px;
   height: 422px;
   margin-left: 40px;
@@ -46,7 +46,7 @@ body {
   width: 229px;
   height: 194px;
   margin-top: 0px;
-  margin-left: 50px;
+  margin-left: 250px;
   background-image: url(/images/signup_bg2.png);
   text-align: center;
 }

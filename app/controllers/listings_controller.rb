@@ -33,6 +33,8 @@ class ListingsController < ApplicationController
     #@applications = @listing.applications
     @applications = Application.find(:all, :conditions => {:listing_id => params[:id], :user_id => current_user.id})
     @applicants = @listing.applicants
+    @comment = @listing.comments.build
+    @comments = @listing.comments
   end
   
   def update

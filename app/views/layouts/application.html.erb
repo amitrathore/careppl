@@ -1,20 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <%= stylesheet_link_tag "login", :media => "all" %>
+<%= stylesheet_link_tag "application", :media => "all" %>
 <title>CarePpl</title>
 
-<body id = "container">
-			<p style="color: green"><%= flash[:notice] %></p>
+
+<body id = "container_app">
+	<h3> Careppl, Inc. </h3>
+	<%= link_to 'Home' , :controller => '/listings', :action => :index %>
+	<%= link_to 'Create' , new_listing_path %>
+	<%= link_to 'View All Listings', all_listings_url %>
+	<%= link_to 'View Applied Listings', applications_url(:id => current_user.id) %>
+	<%= link_to 'Logout' , :controller => '/account', :action => :logout %>
 	
-
-
-<h3> Careppl, Inc. </h3>
-<%= link_to 'Home' , :controller => '/listings', :action => :index %>
-<%= link_to 'Create' , listings_path, :method => :post %>
-<%= link_to 'View All Listings', all_listings_url %>
-<%= link_to 'View Applied Listings', applications_url(:id => current_user.id) %>
-<%= link_to 'Logout' , :controller => '/account', :action => :logout %>
-<p style="color: green"><%= flash[:notice] %></p>
-<%= yield %>
+	<p style="color: green"><%= flash[:notice] %></p>
+	
+	<div id = "left_side">
+	<div id = "right_side">	
+		<div class="t_l"><div class="b_l"><div class="b_r"><div class="t_r">
+			<div id = "app_content">
+			<%= yield %>
+			</div>
+		</div></div></div></div>
+	</div></div>	
+	<div class="clear">&nbsp;</div>
+	
 </body>
 </html>

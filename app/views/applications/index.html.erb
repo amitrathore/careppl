@@ -1,8 +1,11 @@
 <h3>Listing all Your Applications</h3>
-
-<% @applications.each do |application| %>
-	<p>
-	<%= link_to h(Listing.find(application.listing_id).title), listing_path(application.listing_id)%>
-	<%= link_to 'Unapply', application_url(application), :method => :delete %>
-	</p>
+<% if @applications.empty?%>
+	No Applications. <%=link_to 'Apply to a Listing!', all_listings_path %>
+<% else %>
+	<% @applications.each do |application| %>
+		<p>
+		<%= link_to h(Listing.find(application.listing_id).title), listing_path(application.listing_id)%>
+		<%= link_to 'Unapply', application_url(application), :method => :delete %>
+		</p>
+	<% end %>
 <% end %>

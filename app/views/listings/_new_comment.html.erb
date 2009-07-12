@@ -1,0 +1,9 @@
+<p><strong>Write a Comment</strong></p>
+<% form_for [@listing, @comment] do |f| %>
+<%= f.hidden_field :user_id, :value => current_user[:id] %>
+<%= f.hidden_field :listing_id, :value => @listing.id %>
+
+<p><%= f.text_area :body, :class => 'comment_text_box' %></p>
+
+<p><%= submit_tag 'Comment' %></p>
+<% end %>

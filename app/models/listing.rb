@@ -1,6 +1,7 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :applications
+  has_many :comments
   validates_presence_of :title, :body
   
   #def self.listings_of_all_users_except (id)

@@ -1,0 +1,47 @@
+.comment_text_box {
+    height: 100px;
+    color: #7c7c7c;
+    margin-left: 50px;
+	border: 2px solid #999;
+	padding: 4px;
+	background-color: #f3f3f3;	
+	font-weight: bold;
+	
+}
+
+#app_content{
+    padding: 15px 15px 35px 15px;
+}
+#container_app {
+    background-color: #eff2f3;
+    width: 600px;
+}
+
+#right_side{
+    background: url(/images/rounded/rightside.gif) right top repeat-y;    
+}
+#left_side{
+    background: #FFF url(/images/rounded/leftside.gif) repeat-y left top;
+}
+
+.b_l{
+    background: url(/images/rounded/bottom.gif) left bottom no-repeat;   
+    
+}
+
+.b_r{
+    background: url(/images/rounded/bottom-right.gif) right bottom no-repeat;
+    
+}
+
+.t_l{
+    background: url(/images/rounded/top.gif) left top no-repeat;
+    position: relative;
+    
+}
+
+.t_r{
+    background: url(/images/rounded/top-right.gif) right top no-repeat; padding:10px;
+}
+
+.clear {font-size: 1px; height: 1px;}
