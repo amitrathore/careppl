@@ -1,4 +1,4 @@
-<p>AllListings</p>
+<h3>All Listings<h3>
 
 <% @listings.each do |listing| %>
 	<% if listing.user_id != current_user.id %>
@@ -6,3 +6,4 @@
 		<%= link_to 'Apply to Listing', applications_url(:listing_id => h(listing.id)), :method => :post%></p>
 	<% end %>
 <% end %>
+<%= will_paginate @listings %>

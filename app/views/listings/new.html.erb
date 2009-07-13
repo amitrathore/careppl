@@ -4,11 +4,11 @@
     <% form_for @listing do |listing_form| %>  
      <p>     
        <label for="title" class="textInput">Title:</label><br /> 
-       <%= listing_form.text_field :title %>  
+       <%= listing_form.text_field :title, :class => 'text_field' %>  
      </p>  
      <p>  
        <label for="body" class="textInput">Body:</label><br />  
-       <%= listing_form.text_area :body, :class => 'textArea' %>  
+       <%= listing_form.text_area :body, :class => 'text_area' %>  
      </p>  
      <%= listing_form.hidden_field :user_id, :value => current_user[:id] %>
    <%= submit_tag 'Create Listing'%>  

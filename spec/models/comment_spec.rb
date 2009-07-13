@@ -2,12 +2,20 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Comment do
   before(:each) do
-    @valid_attributes = {
-      
-    }
+    @valid_attributes = { :user_id => 1,
+                          :listing_id => 1,
+                          
+                          :body => 'A comment!'
+                        }
+    @comment = Comment.new
   end
 
   it "should create a new instance given valid attributes" do
     Comment.create!(@valid_attributes)
   end
+  
+  it "should have a body which is not null" do
+    @comment.should_not be_valid
+  end
+  
 end

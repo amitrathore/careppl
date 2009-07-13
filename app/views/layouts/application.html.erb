@@ -5,16 +5,28 @@
 <title>CarePpl</title>
 
 
-<body id = "container_app">
-	<h3> Careppl, Inc. </h3>
-	<%= link_to 'Home' , :controller => '/listings', :action => :index %>
-	<%= link_to 'Create' , new_listing_path %>
-	<%= link_to 'View All Listings', all_listings_url %>
-	<%= link_to 'View Applied Listings', applications_url(:id => current_user.id) %>
-	<%= link_to 'Logout' , :controller => '/account', :action => :logout %>
-	
+
+	<div id = "link_header">
+		<div id = "left_side_header">
+		<div id = "right_side_header">
+		<div class="b_l_header"><div class="b_r_header">
+			<div id = "header_content">
+				<% form_tag do %>
+				<%= link_to 'Home' , :controller => '/listings', :action => :index %>
+				<%= link_to 'Create' , new_listing_path %>
+				<%= link_to 'View All Listings', all_listings_url %>
+				<%= link_to 'View Applied Listings', applications_url(:id => current_user.id) %>
+				<%= link_to 'Logout' , :controller => '/account', :action => :logout %>
+				<label for="query" class="search_label">Search: </label>
+				<input class="search_box" type="text" name="query" id="user_login" size="30" value="" />
+				<% end %>
+			</div>
+		</div></div>
+		</div>
+		</div>		
+	</div>
 	<p style="color: green"><%= flash[:notice] %></p>
-	
+	<body id = "container_app">
 	<div id = "left_side">
 	<div id = "right_side">	
 		<div class="t_l"><div class="b_l"><div class="b_r"><div class="t_r">

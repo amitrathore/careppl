@@ -3,6 +3,8 @@ class Listing < ActiveRecord::Base
   has_many :applications
   has_many :comments
   validates_presence_of :title, :body
+  acts_as_sphinx
+
   
   #def self.listings_of_all_users_except (id)
   #  listings =  self.find(:all, :conditions => [:user_id != id ])
@@ -12,7 +14,11 @@ class Listing < ActiveRecord::Base
   #  listings = find(:all)
   #end 
   
-  def applicants
-    return Application.find(:all, :conditions => {:listing_id => self[:id] })
+  def self.per_page
+    10
+  end
+    
+  def owner?(id)
+    return true if(self.user_id == id)
   end
 end

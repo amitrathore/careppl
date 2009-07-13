@@ -6,4 +6,8 @@ class Comment < ActiveRecord::Base
   def owner?(current_user_id)
     return true if(self.user_id == current_user_id)
   end
+  
+  def self.per_page
+    10
+  end
 end

@@ -68,19 +68,35 @@ body {
     text-decoration: underline;
 }
 
-.textInput, .text_field, .password_field {
+.textInput {
     margin-left: 50px;
 	color: #7c7c7c;
 	line-height: 1em;
 	padding: 4px;
+	font-weight: bold;
 }
-.textArea, .text_field, .password_field {
+.text_field {
+    height: 20px;
+    width: 300px;
+}
+.text_area{
+    height: 300px;
+    width: 300px;
+}
+.textArea, .text_field, .text_area, .password_field {
 	margin-left: 50px;
 	border: 2px solid #999;
+	color: #7c7c7c;
 	padding: 4px;
+	line-height: 1em;
 	background-color: #f3f3f3;	
 	font-weight: bold;
 }
+
+a:visited{
+    color: blue;
+}
+
 .button{
     background-image: url(/images/button.png);
     width: 103px;

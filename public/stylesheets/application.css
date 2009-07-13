@@ -8,13 +8,40 @@
 	font-weight: bold;
 	
 }
+#link_header{
+    padding: 0px;
+    width: 1100px;
+}
+#header_content{
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}
+#header_content a:visited{
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}   
+#header_content a:hover{
+    color: #d6d8d9;
+    font-size: 16px;
+    font-weight: bold;   
+}
+p {
+    
+}
 
 #app_content{
     padding: 15px 15px 35px 15px;
 }
 #container_app {
     background-color: #eff2f3;
-    width: 600px;
+    width: 700px;
+    padding: 0px 0px 0px 100px;
+    position: relative; top: 0px;
+    margin: 0px;
 }
 
 #right_side{
@@ -45,3 +72,47 @@
 }
 
 .clear {font-size: 1px; height: 1px;}
+
+.b_l_header{
+    background: url(/images/bottom.gif) left bottom no-repeat;   
+    height: 35px;
+    
+}
+
+.b_r_header{
+    background: url(/images/bottom-right.gif) right bottom no-repeat;
+    height: 35px;
+}
+
+.t_l_header{
+    background: url(/images/top.gif) left top no-repeat;
+    position: relative;
+    
+}
+
+.t_r_header{
+    background: url(/images/top-right.gif) right top no-repeat; padding:10px;
+}
+
+#right_side_header{
+    background: url(/images/rightside.gif) right top repeat-y;    
+}
+#left_side_header{
+    background: #2c72ba url(/images/leftside.gif) repeat-y left top;
+}
+#indent {
+    padding: 0px 0px 0px 20px;
+}
+
+.search_label {
+    font-size: 16px;
+    font-weight: bold;
+}
+.search_box {
+   	border: 2px solid #4cb5ff;
+	color: #7c7c7c;
+	line-height: 1em;
+	background-color: #eff2f3;	
+	font-weight: bold;
+	width: 200px;
+}

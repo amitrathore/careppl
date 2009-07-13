@@ -1,5 +1,5 @@
 <h1>Welcome to CarePpl <%= @name %>!! </h1>
-<p>Your Listings</p>
+<h3><p>Your Listings</p></h3>
 <% if @listings.empty? %>
 	<p>No Listings!  <%= link_to 'Create One Now!' , listings_url, :method => :post %></p>
 <% else %>	
