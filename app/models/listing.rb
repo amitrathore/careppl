@@ -4,7 +4,7 @@ class Listing < ActiveRecord::Base
   has_many :comments
   validates_presence_of :title, :body
   acts_as_sphinx
-
+  
   
   #def self.listings_of_all_users_except (id)
   #  listings =  self.find(:all, :conditions => [:user_id != id ])

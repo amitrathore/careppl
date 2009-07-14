@@ -6,12 +6,12 @@ class CommentsController < ApplicationController
   
   def new
     @listing = Listing.find(params[:listing_id])
-    @comment = @listing.comments.build
+    @comment = @listing.comments.new
   end
   
   def create
     @listing = Listing.find(params[:listing_id])
-    @comment = @listing.comments.build(params[:comment])
+    @comment = @listing.comments.new(params[:comment])
     @current_user_id = current_user.id
     if(@comment.save)
       flash[:notice] = 'Created Comment!'

@@ -1,0 +1,4 @@
+<% form_for @application do |f| %>
+<%= f.hidden_field :user_id, :value => current_user[:id] %>
+<%= f.hidden_field :listing_id, :value => params[:listing_id] %>
+<% end %>

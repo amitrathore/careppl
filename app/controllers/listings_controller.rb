@@ -2,12 +2,15 @@ class ListingsController < ApplicationController
   before_filter :login_required
   
   def index
+    #query = :query
     @listings = Listing.find(:all, :conditions => {:user_id => current_user.id}, :order => 'created_at DESC') 
+    #@listings = Listing.find_with_sphinx(query)
   end
  
   def all_listings
-    @listings = Listing.paginate(:all, :page => params[:page], :order => 'updated_at DESC')
-
+    #@listings = Listing.paginate(:all, :page => params[:page], :order => 'updated_at DESC')
+    @listings =  Listing.find(:all) - Listing.find(:all, :conditions => {:user_id => current_user.id}) 
+    @listings = Listing.paginate(@listings,:page => params[:page], :order => 'updated_at DESC')
   end
  
   def new
@@ -32,9 +35,9 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     #@applications = @listing.applications
-    @applications = Application.find(:all, :conditions => {:listing_id => params[:id], :user_id => current_user.id}, :order => 'created_at DESC')
+    #@applications = Application.find(:all, :conditions => {:listing_id => params[:id], :user_id => current_user.id}, :order => 'created_at DESC')
     @applicants = @listing.applications
-    @comment = @listing.comments.build
+    @comment = @listing.comments.new
     @comments = @listing.comments
     @comments = @comments.paginate(:page => params[:page], :order => 'created_at')
   end
@@ -59,7 +62,7 @@ class ListingsController < ApplicationController
   end
   
   def search
-    query = params[:query]
+    
     @listings = Listing.find_with_sphinx query,:sphinx => {:limit => PER_PAGE, :page => @page}
     @listing_pages = pages_for @listings.total, :page => @page
   end

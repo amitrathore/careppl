@@ -10,6 +10,7 @@
 	<% end %>
 <% end %>
 </div>
+<p><%= link_to 'Apply to Listing', applications_url(:listing_id => h(@listing.id)), :method => :post%></p>
 <p><%= link_to 'Back' , listings_path %>
 <%= link_to 'Edit' , edit_listing_path(@listing) %></p>
 

@@ -3,6 +3,9 @@ class ApplicationsController < ApplicationController
     @applications = Application.find(:all,:conditions => {:user_id => params[:id]}, :order => 'created_at DESC')
   end
   
+  def new
+    @application = Application.new
+  end
   def create
     @application = Application.new
     @application[:listing_id]= params[:listing_id]

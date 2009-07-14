@@ -12,14 +12,19 @@ describe ApplicationsController do
     before do
       @current_user = mock_model(User)
       controller.stub!(:current_user).and_return(@current_user)
+      @listing = mock_model(Listing)
+      controller.stub!(:find).and_return([@listing])
+       @params = { :id => 1,
+                   :title => 'Title',
+                   :body => 'Body'
+                    }
       @application = mock_model(Application)
-      Application.stub!(:find).and_return([@application])
+      controller.stub!(:find).and_return([@application])
               @params = { :id => 1,
                           :user_id => 1,
                           :listing_id => 1
                     }
-      @listing = mock_model(Listing)
-      Listing.stub!(:find).and_return([@listing])
+      
     end
     
     it "should be successful" do
@@ -47,16 +52,17 @@ describe ApplicationsController do
     
     before do
       @current_user = mock_model(User)
-      controller.stub!(:current_user).and_return([@current_user])
+      controller.stub!(:current_user).and_return(@current_user)
       @application = mock_model(Application)
-      controller.stub!(:new).and_return([@application])
+      controller.stub!(:new).and_return(@application)
       @listing = mock_model(Listing)
-      controller.stub!(:find).and_return([@listing])
+      controller.stub!(:find).and_return(@listing)
     end
       
     it "should save a valid object" do
       @application.should_receive(:save).and_return(true)
-      Application.should_receive(:create).with(@listing.id, @current_user.id).and_return(@application)
+      Application.should_receive(:new).and_return(true)
+      #@listing.Application.should_receive(:create).and_return(@application)
       post :create  
     end
   end

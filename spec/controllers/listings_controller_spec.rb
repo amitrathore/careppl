@@ -6,9 +6,15 @@ describe ListingsController  do
       before(:each) do
         @current_user = mock_model(User)
         controller.stub!(:current_user).and_return(@current_user)
-         
+        @applications = mock_model(Application)
+        @comments = mock_model(Comment) 
+        @comment = mock_model(Comment)
         @listing = mock_model(Listing)
+        @listing.stub!(:applications).and_return(@applications)
+        @listing.stub!(:comments).and_return(@comments)
+        @comments.stub!(:new).and_return(@comments)
         Listing.stub!(:find).and_return(@listing)
+        @comments.stub!(:paginate).with(:page => nil, :order => 'created_at').and_return(@comments)
         @params = { :id => 1,
                     :user_id => 1,
                     :title => 'Title',
@@ -27,7 +33,7 @@ describe ListingsController  do
       
       it "should render the show template" do
         do_get
-        find(:all, :conditions => {:listing_id => self[:id] })
+        #Listing.should_receive(:find).with(:conditions => {:listing_id => params[:id]})
         response.should render_template('show')
       end
       
@@ -43,7 +49,7 @@ describe ListingsController  do
       
       it "should assign the found Listing to the view " do
         do_get
-        assigns[:listing].should == [@listing]
+        assigns[:listing].should == @listing
       end
       
       it "should find the listing requested" do
