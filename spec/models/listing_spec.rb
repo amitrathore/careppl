@@ -15,7 +15,7 @@ describe Listing do
   it "should have a valid user id of type organisation" do
    # params = {:controller => '/login'}
    # @user_of_listing = User.find(params[:id => @listing.user_id])
-   # @user_of_listing.account_type.sh  ould == "organization"
+   # @user_of_listing.account_type.sh  ould == "organ	ization"
   end
 
   
@@ -27,5 +27,9 @@ describe Listing do
   it "should have a description which is not null" do
     @listing_test = Listing.create(:id => 1, :user_id => 1, :title => "Listing Name", :body => "")
     @listing_test.should_not be_valid
+  end
+  
+  it "should return true if the user owns the listing" do
+	  @listing.owner?(1).should == true
   end
 end

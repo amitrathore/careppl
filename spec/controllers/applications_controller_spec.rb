@@ -1,7 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ApplicationsController do
-
+  before do
+      @current_user = mock_model(User)
+      controller.stub!(:current_user).and_return(@current_user) 
+      @listing = mock_model(Listing)
+      controller.stub!(:find).and_return(@listing)
+  end
 
   
   def do_get
@@ -10,20 +15,17 @@ describe ApplicationsController do
   
   describe "GET to applied listings" do
     before do
-      @current_user = mock_model(User)
-      controller.stub!(:current_user).and_return(@current_user)
-      @listing = mock_model(Listing)
-      controller.stub!(:find).and_return([@listing])
-       @params = { :id => 1,
-                   :title => 'Title',
-                   :body => 'Body'
-                    }
+
       @application = mock_model(Application)
+      @params = { :id => 1,
+                  :title => 'Title',
+                  :body => 'Body'
+                }
       controller.stub!(:find).and_return([@application])
-              @params = { :id => 1,
-                          :user_id => 1,
-                          :listing_id => 1
-                    }
+      @params = { :id => 1,
+                  :user_id => 1,
+                  :listing_id => 1
+                }
       
     end
     
@@ -51,19 +53,25 @@ describe ApplicationsController do
   describe "POST to applied listings" do
     
     before do
-      @current_user = mock_model(User)
-      controller.stub!(:current_user).and_return(@current_user)
-      @application = mock_model(Application)
-      controller.stub!(:new).and_return(@application)
-      @listing = mock_model(Listing)
-      controller.stub!(:find).and_return(@listing)
+    	@params = {:user_id => 1, :listing_id => 1}
+      @application = mock_model(Application, :listing_id => 1, :user_id => 1)
+      @application.stub!(:new).and_return(@application)
+			controller.stub!(:find).and_return(@application)
     end
       
-    it "should save a valid object" do
+    it "should create a valid object" do
+			
+			Application.should_receive(:new).and_return(@application)
       @application.should_receive(:save).and_return(true)
-      Application.should_receive(:new).and_return(true)
-      #@listing.Application.should_receive(:create).and_return(@application)
-      post :create  
+      post :create, :user_id => 1, :listing_id => 1
     end
+  
+  
+		it "should delete the listing when the user wants to unapply" do
+			Application.stub!(:find).and_return(@application)
+			@application.should_receive(:destroy).once
+			delete :destroy, :id => 1
+		end
+		
   end
 end

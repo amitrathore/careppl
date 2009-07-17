@@ -78,10 +78,13 @@ body {
 .text_field {
     height: 20px;
     width: 300px;
+    font-size: 12px;
 }
 .text_area{
     height: 300px;
     width: 300px;
+    font-size: 12px;
+		font-family: verdana arial;
 }
 .textArea, .text_field, .text_area, .password_field {
 	margin-left: 50px;

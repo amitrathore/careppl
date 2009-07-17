@@ -28,7 +28,7 @@ describe CommentsController do
     it "should delete a comment when destroying one" do
       Comment.stub!(:find).and_return(@comment)
       @comment.should_receive(:destroy).once
-      delete :destroy, id => 1
+      delete :destroy, :id => 1
     end
     
   end

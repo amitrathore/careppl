@@ -36,16 +36,20 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     #@applications = @listing.applications
     #@applications = Application.find(:all, :conditions => {:listing_id => params[:id], :user_id => current_user.id}, :order => 'created_at DESC')
-    @applicants = @listing.applications
+    @applications = @listing.applications
     @comment = @listing.comments.new
     @comments = @listing.comments
     @comments = @comments.paginate(:page => params[:page], :order => 'created_at')
   end
   
+  def edit
+  	@listing = Listing.find(params[:id])
+  end
+  
   def update
     @listing = Listing.find(params[:id])
     if @listing.update_attributes(params[:listing])
-      flash[:notice] = 'Listing was successfully updated.'
+      flash[:notice] = 'Listing was successfully updated!'
       redirect_to(@listing)
     else  
       render :action => "edit"
@@ -62,8 +66,15 @@ class ListingsController < ApplicationController
   end
   
   def search
-    
-    @listings = Listing.find_with_sphinx query,:sphinx => {:limit => PER_PAGE, :page => @page}
-    @listing_pages = pages_for @listings.total, :page => @page
+    @query = params[:query]
+      if @query.blank?
+        redirect_to listings_url
+      else
+        @listings = Listing.find_with_sphinx(params[:query])
+        @listing_pages = pages_for @listings.total, :page => @page
+        @listings = @listings.paginate(:page => params[:page], :order => 'updated_at')
+     
+      end    
   end
+  
 end

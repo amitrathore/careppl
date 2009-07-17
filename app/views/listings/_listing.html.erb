@@ -1,12 +1,13 @@
  <hr /> 
  <h2><%= link_to_unless_current listing.title, listing %></h2>  
+  <%= listing.body %><br /><br /> 
  Posted at: <%= listing.created_at %>
  <% if !listing.owner?(current_user.id) %>
 	  by <strong><%=  h(User.find(listing.user_id).login) %>
  <% end %>
  </strong><br />  
  
- <%= listing.body %>  
+ 
  <% if listing.owner?(current_user.id) %>
 	 <p><%= link_to 'Delete Listing', listing_path(listing), :method => :delete, :confirm => 'Are you sure?' %>
  <% end %>

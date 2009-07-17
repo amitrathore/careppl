@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def pages_for(size, options = {})
    default_options = {:per_page => PER_PAGE}
    options = default_options.merge(options)
-   Paginator.new self, size, options[:per_page], (options[:page] || 1)
+   #Paginator.new self, size, options[:per_page], (options[:page] || 1)
  end
   
 end

@@ -2,12 +2,12 @@
       
     <% form_for @listing do |listing_form| %>  
      <p>     
-       <label for="title" class="textInput">Title:</label>  
-       <%= listing_form.text_field :title %>  
+       <label for="title" class="textInput">Title:</label><br /> 
+       <%= listing_form.text_field :title, :class => 'text_field' %>  
      </p>  
      <p>  
        <label for="body" class="textInput">Body:</label><br />  
-       <%= listing_form.text_area :body %>  
+       <%= listing_form.text_area :body, :class => 'text_area' %>  
      </p>  
    <%= submit_tag 'Update'%>  
    <% end %> 

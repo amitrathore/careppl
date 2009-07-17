@@ -21,4 +21,5 @@ class Listing < ActiveRecord::Base
   def owner?(id)
     return true if(self.user_id == id)
   end
+  
 end

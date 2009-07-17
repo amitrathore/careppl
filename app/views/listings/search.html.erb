@@ -1,0 +1,3 @@
+<h3>Found <%= h(@listings.count) %> with search "<%= h(params[:query]) %>"<h3>
+<%= render :partial => 'listing' , :collection => @listings %>
+<%= will_paginate @listings %>

@@ -1,7 +1,7 @@
 <h3>All Listings<h3>
 
 <% @listings.each do |listing| %>
-	<% if listing.user_id != current_user.id %>
+	<% if !listing.owner?(current_user.id) %>
 		<%= render :partial => 'listing', :object => listing %>
 		<%= link_to 'Apply to Listing', applications_url(:listing_id => h(listing.id)), :method => :post%></p>
 	<% end %>

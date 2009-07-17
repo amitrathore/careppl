@@ -11,7 +11,7 @@
 		<div id = "right_side_header">
 		<div class="b_l_header"><div class="b_r_header">
 			<div id = "header_content">
-				<% form_tag do %>
+				<% form_tag({:controller => '/listings', :action => 'search'}) do %>
 				<%= link_to 'Home' , :controller => '/listings', :action => :index %>
 				<%= link_to 'Create' , new_listing_path %>
 				<%= link_to 'View All Listings', all_listings_url %>
@@ -25,7 +25,8 @@
 		</div>
 		</div>		
 	</div>
-	<p style="color: green"><%= flash[:notice] %></p>
+	<p class = "notice"><%= flash[:notice] %></p>
+	<p class = "error_notice"><%= flash[:error] %></p>
 	<body id = "container_app">
 	<div id = "left_side">
 	<div id = "right_side">	
