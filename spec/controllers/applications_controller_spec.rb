@@ -52,25 +52,20 @@ describe ApplicationsController do
   
   describe "POST to applied listings" do
     
-    before do
-    	@params = {:user_id => 1, :listing_id => 1}
-      @application = mock_model(Application, :listing_id => 1, :user_id => 1)
-      @application.stub!(:new).and_return(@application)
-			controller.stub!(:find).and_return(@application)
-    end
       
     it "should create a valid object" do
-			
-			Application.should_receive(:new).and_return(@application)
-      @application.should_receive(:save).and_return(true)
-      post :create, :user_id => 1, :listing_id => 1
+      Application.find_by_listing_id_and_user_id("1", @current_user.id).should be_nil
+      post :create, :listing_id => 1
+      Application.find_by_listing_id_and_user_id("1", @current_user.id).should be_valid
     end
   
   
-		it "should delete the listing when the user wants to unapply" do
-			Application.stub!(:find).and_return(@application)
-			@application.should_receive(:destroy).once
-			delete :destroy, :id => 1
+	it "should delete the listing when the user wants to unapply" do
+		post :create, :listing_id => 1
+		@application = Application.find_by_listing_id_and_user_id("1", @current_user.id) 
+    	Application.find_by_id(@application.id).should_not be_nil
+		delete :destroy, :id => @application.id
+		Application.find_by_id(@application.id).should be_nil
 		end
 		
   end
