@@ -41,7 +41,7 @@ describe ApplicationsController do
     
     it "should render the show template" do
       get :show , :id => 1
-      render_template('show')
+      render_template('show')  
     end
     
     it "should find all the applied listings of the user" do
@@ -63,7 +63,7 @@ describe ApplicationsController do
 	it "should delete the listing when the user wants to unapply" do
 		post :create, :listing_id => 1
 		@application = Application.find_by_listing_id_and_user_id("1", @current_user.id) 
-    	Application.find_by_id(@application.id).should_not be_nil
+    Application.find_by_id(@application.id).should_not be_nil
 		delete :destroy, :id => @application.id
 		Application.find_by_id(@application.id).should be_nil
 		end

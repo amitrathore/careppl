@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Created Comment!'
       redirect_to listing_url(@listing)
     else
-      render_action :new
+      redirect_to listing_url(@listing)
     end
   end
   
