@@ -6,6 +6,7 @@ describe ApplicationsController do
       controller.stub!(:current_user).and_return(@current_user) 
       @listing = mock_model(Listing)
       controller.stub!(:find).and_return(@listing)
+      
   end
 
   
@@ -26,11 +27,10 @@ describe ApplicationsController do
                   :user_id => 1,
                   :listing_id => 1
                 }
-      
     end
     
     it "should be successful" do
-      get :index 
+      get :index, :id => 1 
       response.should be_success  
     end
     
@@ -51,8 +51,7 @@ describe ApplicationsController do
   end
   
   describe "POST to applied listings" do
-    
-      
+ 
     it "should create a valid object" do
       Application.find_by_listing_id_and_user_id("1", @current_user.id).should be_nil
       post :create, :listing_id => 1
@@ -60,12 +59,12 @@ describe ApplicationsController do
     end
   
   
-	it "should delete the listing when the user wants to unapply" do
-		post :create, :listing_id => 1
-		@application = Application.find_by_listing_id_and_user_id("1", @current_user.id) 
-    Application.find_by_id(@application.id).should_not be_nil
-		delete :destroy, :id => @application.id
-		Application.find_by_id(@application.id).should be_nil
+	  it "should delete the listing when the user wants to unapply" do
+  		post :create, :listing_id => 1
+  		@application = Application.find_by_listing_id_and_user_id("1", @current_user.id) 
+      Application.find_by_id(@application.id).should_not be_nil
+  		delete :destroy, :id => @application.id
+  		Application.find_by_id(@application.id).should be_nil
 		end
 		
   end

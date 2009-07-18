@@ -10,10 +10,15 @@ class CommentsController < ApplicationController
   end
   
   def create
+    
     @listing = Listing.find(params[:listing_id])
+    puts 'Punit Rathore'
+    
     @comment = @listing.comments.new(params[:comment])
+    
     @current_user_id = current_user.id
     if(@comment.save)
+      puts @comment.inspect
       flash[:notice] = 'Created Comment!'
       redirect_to listing_url(@listing)
     else
@@ -28,4 +33,5 @@ class CommentsController < ApplicationController
     flash[:notice] = 'Comment was deleted!'
     redirect_to listing_url(@listing)
   end
+  
 end

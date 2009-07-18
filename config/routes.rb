@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
    #map.user_applications '/applications/index', :controller => '/applications', :action => 'index'
    #map.resources :listings , :has_many => :applied_listings
    #map.resources :applied_listings
-   map.resources :listings, :has_many => :comments, :collection => { :search => :get }
+   map.resources :listings, :has_many => :comments
    map.resources :applications
    
    

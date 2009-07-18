@@ -1,11 +1,14 @@
 class ApplicationsController < ApplicationController
+  
   def index
     @applications = Application.find(:all,:conditions => {:user_id => params[:id]}, :order => 'created_at DESC')
+    @applications = @applications.paginate(:page => params[:page], :order => 'created_at DESC')
   end
   
   def new
     @application = Application.new
   end
+  
   def create
     @application = Application.new
     @application[:listing_id]= params[:listing_id]
