@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   
   def index
     @listings = Listing.find(:all, :conditions => {:user_id => current_user.id}, :order => 'created_at DESC') 
-    @listings = Listing.paginate(@listings, :page => params[:page], :order => 'updated_at DESC')
+    @listings = @listings.paginate(:page => params[:page], :order => 'updated_at DESC')
   end
  
   def all_listings

@@ -2,28 +2,19 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ListingsController  do
 
+  before do
+     @current_user = mock_model(User)
+     controller.stub!(:current_user).and_return(@current_user)
+     @params = {:id => 1, :user_id => @current_user.id, :title => 'Title', :body => 'Body'}
+  end
+
   describe "GET to /listings" do 
       before(:each) do
-        @current_user = mock_model(User)
-        controller.stub!(:current_user).and_return(@current_user)
-        @applications = mock_model(Application)
-        @comments = mock_model(Comment) 
-        @comment = mock_model(Comment)
-        @listing = mock_model(Listing)
-        @listing.stub!(:applications).and_return(@applications)
-        @listing.stub!(:comments).and_return(@comments)
-        @comments.stub!(:new).and_return(@comments)
-        Listing.stub!(:find).and_return(@listing)
-        @comments.stub!(:paginate).with(:page => nil, :order => 'created_at').and_return(@comments)
-        @params = { :id => 1,
-                    :user_id => 1,
-                    :title => 'Title',
-                    :body => 'Body'
-                  }
+        post :create, :listing => @params
       end
       
       def do_get
-        get :show, :id => 1
+        get :show, :id => :first
       end
    
       it "should render the index template" do
@@ -34,6 +25,7 @@ describe ListingsController  do
       it "should render the show template" do
         do_get
         #Listing.should_receive(:find).with(:conditions => {:listing_id => params[:id]})
+        Listing.find(params[:id]).should be_valid
         response.should render_template('show')
       end
       
@@ -43,51 +35,50 @@ describe ListingsController  do
       end
       
       it "should find a list of all listings" do
-         Listing.should_receive(:find).with(:all, :conditions => {:user_id => @current_user.id}, :order => 'created_at DESC').and_return([@listing])
+         Listing.find(:all, :conditions => {:user_id => @current_user.id}, :order => 'created_at DESC').should_not be_empty 
          get :index
       end
       
       it "should assign the found Listing to the view " do
         do_get
-        assigns[:listing].should == @listing
+        assigns[:listing].body.should == 'Body'
+        assigns[:listing].title.should == 'Title'
       end
       
       it "should find the listing requested" do
-        Listing.should_receive(:find).with("1").and_return(@listing)
+        Listing.find(:first).should be_valid
         do_get
       end
   end
   
   describe "POST to /listings" do
-      before(:each) do
-        @current_user = mock_model(User)
-        controller.stub!(:current_user).and_return(@current_user)
-         
-        @listing = mock_model(Listing)
-        controller.stub!(:new).and_return(@listing)
-      end
-      
-        
+
       it "should create new listing successfully" do
-        @listing.should_receive(:save).and_return(true)
-        Listing.should_receive(:new).with(anything()).and_return(@listing)
-        post :create
-        response.should redirect_to(listings_url) 
-        flash[:notice].should == 'Listing was successfully created!'
+        Listing.find(:first).should be_nil
+        post :create , :listing => @params
+        Listing.find(:first).should be_valid
+        
       end
         
       it "should pass the params to listing" do
-        post 'create', :listing => {:title => 'Title'}
-        assigns[:listing].title.should == 'Title'   
+        post :create, :listing => @params
+        assigns[:listing].title.should == 'Title'
+        assigns[:listing].body.should == 'Body'
       end   
     
       it "should re-render new template on failed save" do      
-        @listing.should_receive(:save).and_return(false)
-        Listing.should_receive(:new).with(anything()).and_return(@listing)
-        post :create
+        post :create, :listing => nil
         response.should render_template(:new)
         flash[:notice].should == nil
       end     
+      
+      it "should delete the listing" do
+        post :create , :listing => @params
+        Listing.find(:first).should be_valid
+        delete :destroy, :id => :first
+        Listing.find(:first).should be_nil
+        flash[:notice].should == 'Listing was deleted!'
+      end
    
     end
 

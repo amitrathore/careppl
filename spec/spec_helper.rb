@@ -16,7 +16,9 @@ Spec::Runner.configure do |config|
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
-
+  
+  Listing.configuration[:if] = false
+  
   # == Fixtures
   #
   # You can declare fixtures for each example_group like this:
@@ -48,12 +50,18 @@ Spec::Runner.configure do |config|
   # == Notes
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
-  
-  class ActsAsSolr::Listing
-    def self.execute(request)
-      true
-    end
+    
 end
 
+class ActsAsSolr::Listing
+  def self.execute(request)
+    true
+  end
+end
+
+def with_solr
+  Listing.configuration[:if] = 'true'
+  yield
+  Listing.configuration[:if] = false
 end
 
