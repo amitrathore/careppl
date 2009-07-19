@@ -24,7 +24,6 @@ describe ListingsController  do
       
       it "should render the show template" do
         do_get
-        #Listing.should_receive(:find).with(:conditions => {:listing_id => params[:id]})
         Listing.find(params[:id]).should be_valid
         response.should render_template('show')
       end
