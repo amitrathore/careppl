@@ -16,7 +16,7 @@ describe CommentsController do # Commented out the mock models.
   
     it "should render the listing page to which the comment belongs" do
       @listing_find = Listing.find(@comment.listing_id)
-      get :index, :listing_id => @listing_find.id
+      get :index, :listing_id => @listing_find.id 
     end
     
   end
@@ -28,7 +28,7 @@ describe CommentsController do # Commented out the mock models.
     it "should create a new comment" do
       Comment.find_by_listing_id(@listing.id.to_s).should be_nil
       post :create, :listing_id => @listing.id, :comment => {:body => 'body', :user_id => @current_user.id}
-      Comment.find_by_listing_id(@listing.id.to_s).should be_valid #getting error here!
+      Comment.find_by_listing_id(@listing.id.to_s).should be_valid
     end
     
     it "should delete a comment when destroying one" do

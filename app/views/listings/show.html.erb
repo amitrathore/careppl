@@ -1,6 +1,6 @@
 <%= render :partial => 'listing', :@collection => @listing %>
 
-<% unless @applications %>
+<% unless !@applications %>
 	<p><strong>People who have applied to this listing</strong></p>
 	<div id ="indent">
 	<% @applications.each do |application| %>

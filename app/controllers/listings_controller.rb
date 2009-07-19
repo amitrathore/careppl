@@ -53,8 +53,14 @@ class ListingsController < ApplicationController
   
   def destroy
     @listing = Listing.find(params[:id])
+    @applications = @listing.applications
+    @applications.each do |application|
+      application.destroy
+    end
     @comments = @listing.comments
-    @comments.destroy
+    @comments.each do |comment|
+       comment.destroy
+    end
     @listing.destroy
     flash[:notice] = 'Listing was deleted!'
     redirect_to listings_url
