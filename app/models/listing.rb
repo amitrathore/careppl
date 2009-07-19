@@ -3,7 +3,9 @@ class Listing < ActiveRecord::Base
   has_many :applications
   has_many :comments
   validates_presence_of :title, :body
-  acts_as_sphinx
+  acts_as_solr
+
+  #acts_as_sphinx
   
   
   #def self.listings_of_all_users_except (id)
