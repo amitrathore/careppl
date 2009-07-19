@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   
   def index
     @listings = Listing.find(:all, :conditions => {:user_id => current_user.id}, :order => 'created_at DESC') 
-    #@listings = Listing.paginate(@listings, :page => params[:page], :order => 'updated_at DESC')
+    @listings = Listing.paginate(@listings, :page => params[:page], :order => 'updated_at DESC')
   end
  
   def all_listings
@@ -69,15 +69,11 @@ class ListingsController < ApplicationController
   
   def search
     @query = params[:query]
-      if !@query.blank?
-        #redirect_to listings_url
-      #else
-        #@listing_results = Listing.find_by_solr(params[:query], :limit => 100)
-        #@listings = @listing_results.docs
+      if @query.blank?
+        redirect_to listings_url
+      else
         @count = Listing.count_by_solr(params[:query])
         @listings = Listing.paginate_all_by_solr(params[:query], :page => params[:page], :total_entries => @count)
-        #@listing_pages = pages_for @listing_results.total, :page => @page
-        #@listings = Listing.paginate(@listings_results.docs, :page => params[:page], :order => 'updated_at DESC')       
       end    
   end
   
