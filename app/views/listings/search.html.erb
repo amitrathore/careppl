@@ -1,12 +1,13 @@
-<h3>Found <%= @count %> with search "<%= h(params[:query]) %>"<h3>
+<h3>Found <%= @count %> with search "<%= h(params[:query]) %>"</h3>
 <%= render :partial => 'listing_truncate' , :collection => @listings %>
 <%= will_paginate :collection => @listings , :params => {:query => params[:query]} %>
-<% unless @count%>
 <div = "margin">
-	Suggestions:
-
-    * Make sure all words are spelled correctly.
-    * Try different keywords.
-    * Try more general keywords.
-</div>
+<% if @count == 0 %>
+	Suggestions:<br />
+    <blockquote>
+	* Make sure all words are spelled correctly.<br />
+    * Try different keywords.<br />
+    * Try more general keywords.<br />
+	</blockquote>
 <% end %>
+</div>

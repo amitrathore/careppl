@@ -14,10 +14,6 @@ class ListingsController < ApplicationController
   def new
     @listing = Listing.new
   end
-   
-  def applicants
-    @applications = Application.find(:all, :conditions => {:listing_id => params[:id]}, :order => 'created_at DESC')
-  end
   
   def create
     @listing = Listing.new(params[:listing])
@@ -45,7 +41,7 @@ class ListingsController < ApplicationController
   def update
     @listing = Listing.find(params[:id])
     if @listing.update_attributes(params[:listing])
-      flash[:notice] = 'Listing watotals successfully updated!'
+      flash[:notice] = 'Listing was successfully updated!'
       redirect_to(@listing)
     else  
       render :action => "edit"

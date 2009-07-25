@@ -1,6 +1,11 @@
 <%= render :partial => 'listing', :@collection => @listing %>
 
-<% unless !@applications %>
+<p><%= link_to 'Apply to Listing', applications_url(:listing_id => @listing.id), :method => :post unless @listing.owner?(current_user.id) %></p>
+
+<p><%= link_to 'Back' , listings_path %>
+<%= link_to 'Edit Listing' , edit_listing_path(@listing) if @listing.owner?(current_user.id)%></p>
+
+<% if @applications.count > 0 %>
 	<p><strong>People who have applied to this listing</strong></p>
 	<div id ="indent">
 	<% @applications.each do |application| %>
@@ -12,14 +17,10 @@
 	<% end %>
 	</div>
 <% end %>
-<% unless @listing.owner?(current_user.id) %>
-<p><%= link_to 'Apply to Listing', applications_url(:listing_id => @listing.id), :method => :post%></p>
-<% end %>
-<p><%= link_to 'Back' , listings_path %>
-<%= link_to 'Edit' , edit_listing_path(@listing) %></p>
+
 
 <hr />
-<% if @comments.count > 0 %>
+<% if @comments.count %>
 	<p><strong>Displaying Comments</strong></p>
 	<%= render :partial => 'comment', :collection => @comments %>
 <% end %>
