@@ -1,20 +1,36 @@
-<div id="login">
+<%= error_messages_for 'user' %>
+
 <table>
 <tr>
 <td>
-<div id="content">
-<p>Create your Organization account here!</p>
-<%= error_messages_for :user %>
-<% form_for :user do |f| -%>
-<%= f.hidden_field :account_type, :value => 'organization' %>
-<%= render(:partial => "signup" , :object => f)%>
-<% end -%>
+<div id = "login">
+	<div id = "left_side_login">
+	<div id = "right_side_login">	
+		<div class="t_l_login"><div class="b_l_login"><div class="b_r_login"><div class="t_r_login">
+			<div id = "content">
+				<p>Create your Organization account here!</p>
+					<%= error_messages_for :user %>
+					<% form_for :user do |f| -%>
+					<%= f.hidden_field :account_type, :value => 'organization' %>
+					<%= render(:partial => "signup" , :object => f)%>
+				<% end -%>
+				</div>
+		</div></div></div></div>
+	</div></div>
+</div>
 </td>
 <td>
-<div id="small_box"><p id="content_small_box"><%= link_to(image_tag("/images/back.gif"),{ :controller => :account, :action => :login }, :class => 'link_img') %></p></div>
-<div id = "small_box"><p id="content_small_box"><%= link_to(image_tag("/images/create_user_account.gif"),{ :action => :signup_individual}, :class => 'link_acc') %></p></div>
+	<div id = "small_box"><div id = "left_side_login"><div id = "right_side_login">	
+	<div class="t_l_login"><div class="b_l_login"><div class="b_r_login"><div class="t_r_login">
+		<p id="content_small_box"><%= link_to(image_tag("/images/back.gif"),{ :controller => :account, :action => :login }, :class => 'link_img') %></p>
+	</div></div></div></div>
+	</div></div></div>
+	
+	<div id = "small_box"><div id = "left_side_login"><div id = "right_side_login">	
+	<div class="t_l_login"><div class="b_l_login"><div class="b_r_login"><div class="t_r_login">
+		<p id="content_small_box"><%= link_to(image_tag("/images/create_user_account.gif"),{ :action => :signup_individual}, :class => 'link_acc') %>
+	</div></div></div></div>
+</div></div></div>
 </td>
 </tr>
 </table>
-</div>
-</div>

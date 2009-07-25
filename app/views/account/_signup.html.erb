@@ -1,15 +1,15 @@
 <% form_for :user do |f| -%>
-<p class="textInput"><label for="login" >Login:</label><br/>
-<%= f.text_field :login, :class => 'textArea' %></p>
+<p class="textInput_login"><label for="login" >Login:</label><br/>
+<%= f.text_field :login, :class => 'textbox_login' %></p>
 
-<p class="textInput"><label for="email" >Email:</label><br/>
-<%= f.text_field :email %></p>
+<p class="textInput_login"><label for="email" >Email:</label><br/>
+<%= f.text_field :email, :class => 'textbox_login' %></p>
 
-<p class="textInput"><label for="password">Password:</label><br/>
-<%= f.password_field :password %></p>
+<p class="textInput_login"><label for="password">Password:</label><br/>
+<%= f.password_field :password, :class => 'textbox_login'%></p>
 
-<p class="textInput"><label for="password_confirmation">Confirm Password:</label><br/>
-<%= f.password_field :password_confirmation %></p>
+<p class="textInput_login"><label for="password_confirmation">Confirm Password:</label><br/>
+<%= f.password_field :password_confirmation, :class => 'textbox_login' %></p>
 
-<p><%= submit_tag 'Sign up' %></p>
+<p><%= submit_tag 'Sign up', :class => 'button' %></p>
 <% end -%>

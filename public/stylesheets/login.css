@@ -14,7 +14,7 @@
 }
 
 #container {
-  background-color: #95e112;
+  background-color: #eff2f3;
 }
 
 body {
@@ -22,37 +22,39 @@ body {
 }
 
 #login {
-  width: 800px;
-  margin-left: 40px;
+  width: 500px;
+  margin-left: 250px;	
   
 }
 
 #content {  
   width: 499px;
-  height: 422px;
-  margin-left: 40px;
+  margin-left: 0px;
   margin-top: -5px;
-  background-image: url(/images/login_bg.png);
   font-weight: bold;
-  color: #A33;
-  position: relative; left: 200px;
+  color: #FFF;
+  padding: 40px 20px 60px 20px;
+  min-height: 350px;
+  max-height: 350px;
+
 }
 #login_button{
   background-image: url(/images/button.png);
 }
 
 #small_box {
-  position: relative; top:0px;
+  position: relative; top:15px;
   width: 229px;
   height: 194px;
   margin-top: 0px;
-  margin-left: 250px;
-  background-image: url(/images/signup_bg2.png);
+  margin-left: 100px;
   text-align: center;
 }
 #content_small_box{
-  position: relative; top:70px;
+  position: relative; top: 30px; left: 40px;
   text-align: center;
+  width: 120px;
+  height: 120px;
 }
 #content_signup{
   position: relative;
@@ -84,7 +86,7 @@ body {
     height: 300px;
     width: 300px;
     font-size: 12px;
-		font-family: verdana arial;
+	font-family: verdana arial;
 }
 .textArea, .text_field, .text_area, .password_field {
 	margin-left: 50px;
@@ -96,18 +98,39 @@ body {
 	font-weight: bold;
 }
 
+.textInput_login {
+    margin-left: 25px;
+	color: #dcdcdc;
+	line-height: 1em;
+	padding: 4px;
+	font-weight: bold;
+	
+}
+.textbox_login {
+	margin-left: 50px;
+	border: 2px solid #02D1F1;
+	color: #7c7c7c;
+	padding: 4px;
+	line-height: 1em;
+	background-color: #f3f3f3;	
+	font-weight: bold;
+	
+}
 a:visited{
-    color: blue;
+    color: blue
 }
 
 .button{
     background-image: url(/images/button.png);
-    width: 103px;
-    height: 46px;
+    width: 102px;
+    height: 44px;
     margin-left: 50px;
     font-weight: bold;
     font-size: 11px;
-    color: white;
+    color: black;
+	line-height: 44px;
+	overflow: visible; 
+	border: solid 1px #440000;
 }
 .link_acc{
     background-image: url(/images/link_acc_button.png);
@@ -116,7 +139,7 @@ a:visited{
     color: black;
 }
 .link_img{
-    margin-left: 10px;
+    
 }
 img{
     border-style: none;
@@ -124,3 +147,31 @@ img{
 button{
     border-style: none;
 }
+
+#right_side_login{
+    background: url(/images/rounded-blue/rightside.gif) right top repeat-y;    
+}
+#left_side_login{
+    background: #2c72ba url(/images/rounded-blue/leftside.gif) repeat-y left top;
+}
+
+.b_l_login{
+    background: url(/images/rounded-blue/bottom.gif) left bottom no-repeat;   
+    
+}
+
+.b_r_login{
+    background: url(/images/rounded-blue/bottom-right.gif) right bottom no-repeat;
+    
+}
+
+.t_l_login{
+    background: url(/images/rounded-blue/top.gif) left top no-repeat;
+    position: relative;
+    
+}
+
+.t_r_login{
+    background: url(/images/rounded-blue/top-right.gif) right top no-repeat; padding:10px;
+}
+

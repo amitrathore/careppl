@@ -46,60 +46,60 @@
     width: 650px;
 }
 #right_side{
-    background: url(/images/rounded/rightside.gif) right top repeat-y;    
+    background: url(/images/rounded-grey/rightside.gif) right top repeat-y;    
 }
 #left_side{
-    background: #FFF url(/images/rounded/leftside.gif) repeat-y left top;
+    background: #FFF url(/images/rounded-grey/leftside.gif) repeat-y left top;
 }
 
 .b_l{
-    background: url(/images/rounded/bottom.gif) left bottom no-repeat;   
+    background: url(/images/rounded-grey/bottom.gif) left bottom no-repeat;   
     
 }
 
 .b_r{
-    background: url(/images/rounded/bottom-right.gif) right bottom no-repeat;
+    background: url(/images/rounded-grey/bottom-right.gif) right bottom no-repeat;
     
 }
 
 .t_l{
-    background: url(/images/rounded/top.gif) left top no-repeat;
+    background: url(/images/rounded-grey/top.gif) left top no-repeat;
     position: relative;
     
 }
 
 .t_r{
-    background: url(/images/rounded/top-right.gif) right top no-repeat; padding:10px;
+    background: url(/images/rounded-grey/top-right.gif) right top no-repeat; padding:10px;
 }
 
 .clear {font-size: 1px; height: 1px;}
 
 .b_l_header{
-    background: url(/images/bottom.gif) left bottom no-repeat;   
+    background: url(/images/rounded-blue/bottom.gif) left bottom no-repeat;   
     height: 35px;
     
 }
 
 .b_r_header{
-    background: url(/images/bottom-right.gif) right bottom no-repeat;
+    background: url(/images/rounded-blue/bottom-right.gif) right bottom no-repeat;
     height: 35px;
 }
 
 .t_l_header{
-    background: url(/images/top.gif) left top no-repeat;
+    background: url(/images/rounded-blue/top.gif) left top no-repeat;
     position: relative;
     
 }
 
 .t_r_header{
-    background: url(/images/top-right.gif) right top no-repeat; padding:10px;
+    background: url(/images/rounded-blue/top-right.gif) right top no-repeat; padding:10px;
 }
 
 #right_side_header{
-    background: url(/images/rightside.gif) right top repeat-y;    
+    background: url(/images/rounded-blue/rightside.gif) right top repeat-y;    
 }
 #left_side_header{
-    background: #2c72ba url(/images/leftside.gif) repeat-y left top;
+    background: #2c72ba url(/images/rounded-blue/leftside.gif) repeat-y left top;
 }
 #indent {
     padding: 0px 0px 0px 20px;
@@ -109,6 +109,7 @@
     font-size: 16px;
     font-weight: bold;
 }
+
 .search_box {
    	border: 2px solid #4cb5ff;
 	color: #7c7c7c;
@@ -119,9 +120,10 @@
 }
 
 .submit_button {
-    back-ground-color: #2c72ba;
+    background-color: #2c72ba;
     color: white;
     background-image: url(/images/button_back.png);
+	margin-left: 50px;
     
 }
 

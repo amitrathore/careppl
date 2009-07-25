@@ -11,5 +11,5 @@
        <%= listing_form.text_area :body, :class => 'text_area' %>  
      </p>  
      <%= listing_form.hidden_field :user_id, :value => current_user[:id] %>
-   <%= submit_tag 'Create Listing'%>  
+   <%= submit_tag 'Create Listing', :class => 'submit_button'%>  
    <% end %> 

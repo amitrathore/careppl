@@ -1,0 +1,13 @@
+ <hr /> 
+ <h2><%= link_to_unless_current listing_truncate.title, listing_truncate %></h2>  
+  <%= truncate(listing_truncate.body, :length => 200) %><br /> 
+ Posted at: <%= listing_truncate.created_at %>
+ <% if !listing_truncate.owner?(current_user.id) %>
+	  by <strong><%=  h(User.find(listing_truncate.user_id).login) %>
+ <% end %>
+ </strong><br />  
+ 
+ 
+ <% if listing_truncate.owner?(current_user.id) %>
+	 <p><%= link_to 'Delete Listing', listing_path(listing_truncate), :method => :delete, :confirm => 'Are you sure?' %>
+ <% end %>

@@ -1,30 +1,46 @@
-<div id="login">
+
 <table>
 <tr>
 <td>
-<div id="content">
-	<p>Sign in with your account!</p><br/>
-		<% form_tag do -%>
-		<p class="textInput"><label for="login">Login:</label><br/><br/>
-		<input type="text" class="textArea" name="login" id="user_login" size="30" value=""/></p>
-	
-		
-		<p class="textInput"><label for="password">Password:</label><br/><br/>
-		<input type="password" class="textArea" name="password" id="user_password" size="30"/></p>
-		
-		
-		<!-- Uncomment this if you want this functionality
-		<p><label for="remember_me">Remember me:</label>
-		<%= check_box_tag 'remember_me' %></p>
-		-->
-		
-		<input type="submit" name="Log in" value="Log in" class="button eighty" />
-		<% end -%>
+
+<div id = "login">
+	<div id = "left_side_login">
+	<div id = "right_side_login">	
+		<div class="t_l_login"><div class="b_l_login"><div class="b_r_login"><div class="t_r_login">
+			<div id = "content">
+			<p>Sign in with your account!</p><br/>
+				<% form_tag do -%>
+				<p class="textInput_login"><label for="login">Login:</label><br/><br/>
+				<input type="text" class="textbox_login" name="login" id="user_login" size="30" value=""/></p>
+			
+				
+				<p class="textInput_login"><label for="password">Password:</label><br/><br/>
+				<input type="password" class="textbox_login" name="password" id="user_password" size="30"/></p>
+				
+				
+				<!-- Uncomment this if you want this functionality
+				<p><label for="remember_me">Remember me:</label>
+				<%= check_box_tag 'remember_me' %></p>
+				-->
+				<input type="submit" name="Log in" value="Log in" class="button" />
+				<% end -%>
+			</div>
+		</div></div></div></div>
+	</div></div>
 </div>
 </td>
 <td>
-</div>
-<div id = "small_box"><p id="content_small_box"><%= link_to(image_tag("/images/create_user_account.gif"),{ :action => :signup_individual}, :class => 'link_acc') %></p></div>
-<div id= "small_box"><p id="content_small_box"><%= link_to(image_tag("/images/create_organization_account.gif"),{ :action => :signup_organization }, :class => 'link_acc') %></p></div>
+
+<div id = "small_box"><div id = "left_side_login"><div id = "right_side_login">	
+	<div class="t_l_login"><div class="b_l_login"><div class="b_r_login"><div class="t_r_login">
+		<p id="content_small_box"><%= link_to(image_tag("/images/create_user_account.gif"),{ :action => :signup_individual}, :class => 'link_acc') %></p>
+	</div></div></div></div>
+</div></div></div>
+<div id = "small_box"><div id = "left_side_login"><div id = "right_side_login">	
+	<div class="t_l_login"><div class="b_l_login"><div class="b_r_login"><div class="t_r_login">
+		<p id="content_small_box"><%= link_to(image_tag("/images/create_organization_account.gif"),{ :action => :signup_organization }, :class => 'link_acc') %></p>
+	</div></div></div></div>
+</div></div></div>
+
 </td>
 </tr>
