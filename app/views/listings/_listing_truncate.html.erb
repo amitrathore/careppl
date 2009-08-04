@@ -1,6 +1,6 @@
  <hr /> 
  <h2><%= link_to_unless_current listing_truncate.title, listing_truncate %></h2>  
-  <%= truncate(listing_truncate.body, :length => 200) %><br /> 
+  <%= truncate(listing_truncate.body, :length => 200) %><br /><br />
  Posted at: <%= listing_truncate.created_at %>
  <% if !listing_truncate.owner?(current_user.id) %>
 	  by <strong><%=  h(User.find(listing_truncate.user_id).login) %>

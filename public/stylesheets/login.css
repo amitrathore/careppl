@@ -77,17 +77,7 @@ body {
 	padding: 4px;
 	font-weight: bold;
 }
-.text_field {
-    height: 20px;
-    width: 300px;
-    font-size: 12px;
-}
-.text_area{
-    height: 300px;
-    width: 300px;
-    font-size: 12px;
-	font-family: verdana arial;
-}
+
 .textArea, .text_field, .text_area, .password_field {
 	margin-left: 50px;
 	border: 2px solid #999;
@@ -116,6 +106,13 @@ body {
 	font-weight: bold;
 	
 }
+
+.fieldWithErrors{
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	
+}
+
 a:visited{
     color: blue
 }

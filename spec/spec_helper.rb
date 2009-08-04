@@ -53,6 +53,7 @@ Spec::Runner.configure do |config|
     
 end
 
+
 class ActsAsSolr::Listing
   def self.execute(request)
     true

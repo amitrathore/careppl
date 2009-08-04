@@ -6,7 +6,7 @@
 <%= javascript_include_tag :defaults %>
 </head>
 <title>CarePpl</title>
-
+<%= error_messages_for :user %>
 <body id = "container">
 			<div id="header">
 				<table>
@@ -20,9 +20,7 @@
 			</div>
 			<p class = "notice"><%= flash[:notice] %></p>
 			<p class= "error_notice"><%= flash[:error] %></p>
-			<table>
 			<%= yield %>
-			</table>
 </body>
 </html>
 

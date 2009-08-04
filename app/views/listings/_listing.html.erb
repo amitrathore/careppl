@@ -1,7 +1,7 @@
  <hr /> 
  <h2><%= link_to_unless_current listing.title, listing %></h2>  
  <div id = "indent">
- 	<%= simple_format(listing.body) %><br /><br />
+ 	<%= simple_format(listing.body) %><br />
 </div> 
  Posted at: <%= listing.created_at %>
  <% if !listing.owner?(current_user.id) %>

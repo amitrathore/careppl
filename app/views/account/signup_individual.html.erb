@@ -1,5 +1,3 @@
-<%= error_messages_for 'user' %>
-
 <table>
 <tr>
 <td>
@@ -9,10 +7,10 @@
 		<div class="t_l_login"><div class="b_l_login"><div class="b_r_login"><div class="t_r_login">
 			<div id = "content">
 				<p>Create an individual user account here!</p>
-				<%= error_messages_for :user %>
+
 				<% form_for :user do |f| -%>
 					<%= f.hidden_field :account_type, :value => 'individual' %>
-					<%= render(:partial => "signup" , :locals => {:f => f})%>
+					<%= render(:partial => "signup" , :object => f)%>
 				<% end -%>
 				</div>
 		</div></div></div></div>
