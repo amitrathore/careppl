@@ -3,20 +3,20 @@
 <head>
 <%= stylesheet_link_tag "login", :media => "all" %>
 <%= stylesheet_link_tag "application", :media => "all" %>
-<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag :all %>
 </head>
 <title>CarePpl</title>
-
+<div id="main">
 	<div id = "link_header">
 		<div id = "left_side_header">
 		<div id = "right_side_header">
 		<div class="b_l_header"><div class="b_r_header">
 			<div id = "header_content">
-				<% form_tag({:controller => '/listings', :action => 'search'}) do %>
-					<%= link_to 'Home' , :controller => '/listings', :action => :index %>
-					<%= link_to 'Create' , new_listing_path %>
-					<%= link_to 'View All Listings', all_listings_url %>
-					<%= link_to 'View Applied Listings', applications_url(:id => current_user.id) %>
+				<% form_tag(:controller => '/listings', :action => 'search') do %>
+					<%= link_to 'Home' ,listings_url, :update => 'main' %>
+					<%= link_to_remote 'Create' , :url => new_listing_path, :update => 'app_content' %>
+					<%= link_to_remote 'View All Listings', :url => all_listings_url, :update => 'app_content' %>
+					<%= link_to_remote 'View Applied Listings', :url => { :controller => 'applications', :action => 'index', :id => current_user.id }, :update => 'app_content' %>
 					<%= link_to 'Logout' , :controller => '/account', :action => :logout %>
 					<label for="query" class="search_label">Search: </label>
 					<input class="search_box" type="text" name="query" id="search_box_id" onfocus="textChange('search_box_id', 'search');" 
@@ -27,8 +27,8 @@
 		</div>
 		</div>		
 	</div>
-	<p class = "notice"><%= flash[:notice] %></p>
-	<p class = "error_notice"><%= flash[:error] %></p>
+	<p id ="flash_notice" class = "notice"><%= flash[:notice] %></p>
+	<p id = "flash_error"><%= flash[:error] %></p>
 	<body id = "container_app">
 	<div id = "left_side">
 	<div id = "right_side">	
@@ -39,6 +39,6 @@
 		</div></div></div></div>
 	</div></div>	
 	<div class="clear">&nbsp;</div>
-	
+</div>	
 </body>
 </html>

@@ -1,0 +1,6 @@
+<% if listings.empty? %>
+	<p>No Listings!  <%= link_to 'Create One Now!' , listings_url, :method => :post %></p>
+<% else %>	
+	<%= render :partial => 'listing_truncate' , :collection => listings %>
+<% end %>
+<%= will_paginate listings%>

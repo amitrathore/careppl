@@ -1,0 +1,10 @@
+<p><strong>Write a Comment</strong></p>
+<% remote_form_for [@listing, @comment], :loading => "Element.hide('comment_button'); Element.show('comment_loading');" do |f|  %>
+<%= f.hidden_field :user_id, :value => current_user[:id] %>
+<%= f.hidden_field :listing_id, :value => @listing.id %>
+
+<p><%= f.text_area :body,:class => 'comment_text_box' %></p>
+
+<p><%= submit_tag 'Comment' , :class => 'submit_button', :id => 'comment_button'  %></p>
+<% end %>
+<%= image_tag 'spinner.gif', :style => 'display: none', :id => 'comment_loading', :class => 'submit_button' %>

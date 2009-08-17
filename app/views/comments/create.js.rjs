@@ -1,0 +1,8 @@
+page.insert_html :bottom, :comments, :partial => @comment
+page[@comment].visual_effect :highlight
+page[:new_comment].reset
+page.replace_html :flash_notice, flash[:notice]
+page[:flash_notice].visual_effect :highlight, :duration => 5
+page[:comment_button].show
+page[:comment_loading].hide
+flash.discard

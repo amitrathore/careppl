@@ -7,20 +7,24 @@
 </head>
 <title>CarePpl</title>
 <%= error_messages_for :user %>
-<body id = "container">
+<body>
+	<div id ="main">
+		<div id = "container">
 			<div id="header">
 				<table>
 					<tr>
 						<td><%= image_tag("rails.png") %></td>
-						<td><h1>CarePpl</h1>
+						<td><h1>CareKaro</h1>
 							<h2>The Do Good Website!</h2>
 						</td>
 					</tr>
 				</table>
 			</div>
-			<p class = "notice"><%= flash[:notice] %></p>
-			<p class= "error_notice"><%= flash[:error] %></p>
+			<p id="flash_notice" class = "notice"><%= flash[:notice] %></p>
+			<p id="flash_error" class= "error_notice"><%= flash[:error] %></p>
 			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>
 

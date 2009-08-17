@@ -1,5 +1,6 @@
-<%= render :partial => 'listing', :@collection => @listing %>
-
+<div id="listings">
+	<%= render :partial => 'listing', :object => @listing %>
+</div>
 <p><%= link_to 'Apply to Listing', applications_url(:listing_id => @listing.id), :method => :post unless @listing.owner?(current_user.id) %></p>
 
 <p><%= link_to 'Back' , listings_path %>
@@ -20,9 +21,13 @@
 
 
 <hr />
+
+<div id="comments">
 <% if @comments.count %>
 	<p><strong>Displaying Comments</strong></p>
-	<%= render :partial => 'comment', :collection => @comments %>
+	
+	<%= render :partial => @comments %>
 <% end %>
 <%= will_paginate @comments %>
-<%= render :partial => 'new_comment' %>
+</div>
+<%= render :partial => 'comments/new' %>

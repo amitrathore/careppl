@@ -1,9 +1,11 @@
-<h3>All Listings<h3>
+<div id="all_listings">
+<h3>All Listings</h3>
 
 <% @listings.each do |listing| %>
 	<% if !listing.owner?(current_user.id) %>
-		<%= render :partial => 'listing', :object => listing %>
+		<%= render :partial => 'listing_truncate', :object => listing %>
 		<%= link_to 'Apply to Listing', applications_url(:listing_id => h(listing.id)), :method => :post%></p>
 	<% end %>
 <% end %>
+</div>
 <%= will_paginate @listings %>

@@ -1,15 +1,17 @@
- <hr /> 
- <h2><%= link_to_unless_current listing.title, listing %></h2>  
- <div id = "indent">
- 	<%= simple_format(listing.body) %><br />
-</div> 
- Posted at: <%= listing.created_at %>
- <% if !listing.owner?(current_user.id) %>
-	  by <strong><%=  h(User.find(listing.user_id).login) %>
- <% end %>
- </strong><br />  
- 
- 
- <% if listing.owner?(current_user.id) %>
-	 <p><%= link_to 'Delete Listing', listing_path(listing), :method => :delete, :confirm => 'Are you sure?' %>
- <% end %>
+<% div_for listing do %>
+	 <hr /> 
+	 <h2><%= link_to_unless_current listing.title, listing %></h2>  
+	 <div id = "indent">
+	 	<%= simple_format(listing.body) %><br />
+	</div> 
+	 Posted at: <%= listing.created_at %>
+	 <% if !listing.owner?(current_user.id) %>
+		  by <strong><%=  h(User.find(listing.user_id).login) %>
+	 <% end %>
+	 </strong><br />  
+	 
+	 
+	 <% if listing.owner?(current_user.id) %>
+		 <p><%= link_to 'Delete Listing', listing_path(listing), :method => :delete, :confirm => 'Are you sure?' %>
+	 <% end %>
+<% end %>

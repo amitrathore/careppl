@@ -1,0 +1,3 @@
+page[:login_button].show
+page[:login_loading].hide
+page.redirect_to listing_url

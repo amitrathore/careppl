@@ -8,7 +8,7 @@
 		<div class="t_l_login"><div class="b_l_login"><div class="b_r_login"><div class="t_r_login">
 			<div id = "content">
 			<p>Sign in with your account!</p><br/>
-				<% form_tag do -%>
+				<% form_tag :loading => "Element.hide('login_button'); Element.show('login_loading');" do %>
 				<p class="textInput_login"><label for="login">Login:</label><br/><br/>
 				<input type="text" class="textbox_login" name="login" id="user_login" size="30" value=""/></p>
 			
@@ -21,7 +21,8 @@
 				<p><label for="remember_me">Remember me:</label>
 				<%= check_box_tag 'remember_me' %></p>
 				-->
-				<input type="submit" name="Log in" value="Log in" class="button" />
+				<input type="submit" name="Log in" value="Log in" class="button" id="login_button"/>
+				<%= image_tag 'spinner.gif', :style => 'display: none', :id => 'login_loading' %>
 				<% end -%>
 			</div>
 		</div></div></div></div>

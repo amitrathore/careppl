@@ -1,0 +1,14 @@
+<% div_for comment do %>
+
+<% if comment.user_id %>
+	<%= comment.body %>
+	<p>Posted at: <%= comment.created_at %>
+	<%= h(User.find(comment.user_id).login) %></p>
+	<% if comment.owner?(current_user.id) %>
+		<%= link_to_remote 'Delete', :url => listing_comment_path(@listing,comment),
+		 :method => :delete, :confirm => 'Are you sure?', :update => "comment_#{comment.id}" %>		 
+	<% end %>
+	<hr />
+<% end %>
+
+<% end %>

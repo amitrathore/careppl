@@ -11,22 +11,27 @@ class CommentsController < ApplicationController
   
   def create
     @listing = Listing.find(params[:listing_id])
-    @comment = @listing.comments.new(params[:comment])
+    @comment = @listing.comments.create!(params[:comment])
     @current_user_id = current_user.id
-    if(@comment.save)
-      flash[:notice] = 'Created Comment!'
-      redirect_to listing_url(@listing)
-    else
-      redirect_to listing_url(@listing)
+    flash[:notice] = 'Created Comment!'
+    respond_to do |format|
+      format.html {redirect_to @listing}
+      format.js { render 'comments/create.js.rjs' }
     end
+      
+    
   end
   
   def destroy
     @listing = Listing.find(params[:listing_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash[:notice] = 'Comment was deleted!'
-    redirect_to listing_url(@listing)
+    flash[:notice] = 'Deleted Comment!'
+    respond_to do |format|
+      format.html {redirect_to @listing}
+      format.js { render :nothing => true }
+    end  
   end
   
 end
+

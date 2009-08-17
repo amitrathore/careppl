@@ -6,10 +6,13 @@ describe ListingsController  do
      @current_user = mock_model(User)
      controller.stub!(:current_user).and_return(@current_user)
      @params = {:id => 1, :user_id => @current_user.id, :title => 'Title', :body => 'Body'}
+     
   end
 
   describe "GET to /listings" do 
       before(:each) do
+        @listings = Listing.find(:all,:conditions => {:user_id => @current_user.id})
+        @current_user.should_receive(:listings).and_return(@listings)
         post :create, :listing => @params
       end
       
@@ -50,9 +53,11 @@ describe ListingsController  do
       end
   end
   
-  describe "POST to /listings" do
+  describe "POST to /listings" do 
 
       it "should create new listing successfully" do
+        @listings = Listing.find(:all,:conditions => {:user_id => @current_user.id})
+        @current_user.should_receive(:listings).and_return(@listings)
         Listing.find(:first).should be_nil
         post :create , :listing => @params
         Listing.find(:first).should be_valid
@@ -60,6 +65,8 @@ describe ListingsController  do
       end
         
       it "should pass the params to listing" do
+        @listings = Listing.find(:all,:conditions => {:user_id => @current_user.id})
+        @current_user.should_receive(:listings).and_return(@listings)
         post :create, :listing => @params
         assigns[:listing].title.should == 'Title'
         assigns[:listing].body.should == 'Body'
@@ -72,11 +79,14 @@ describe ListingsController  do
       end     
       
       it "should delete the listing" do
+        @listings = Listing.find(:all,:conditions => {:user_id => @current_user.id})
+        @current_user.should_receive(:listings).and_return(@listings)
         post :create , :listing => @params
         Listing.find(:first).should be_valid
         delete :destroy, :id => :first
         Listing.find(:first).should be_nil
         flash[:notice].should == 'Listing was deleted!'
+        
       end
    
     end

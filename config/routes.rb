@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   # The priority is based upon order of creation: first created -> highest priority.
    map.search '/listings/search', :controller => '/listings', :action => 'search'
    map.all_listings '/listings/all_listings', :controller => '/listings', :action => 'all_listings'

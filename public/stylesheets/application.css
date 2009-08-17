@@ -11,12 +11,21 @@
 #link_header{
     padding: 0px;
     width: 1000px;
+	font-family: Helvetica,tahoma,verdana,arial,sans-serif;
 }
+
 #header_content{
     font-size: 14px;
     color: white;
     text-align: center;
 }
+#header_content a{
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+} 
 #header_content a:visited{
     padding: 10px;
     font-size: 16px;
@@ -41,6 +50,7 @@
     padding: 0px 0px 0px 100px;
     position: relative; top: 0px;
     margin: 0px;
+	font-family: Helvetica,tahoma,verdana,arial,sans-serif;
 }
 #container_app hr {
     width: 650px;
@@ -101,7 +111,7 @@
 #left_side_header{
     background: #2c72ba url(/images/rounded-blue/leftside.gif) repeat-y left top;
 }
-#indent {
+#indent, .indent {
     padding: 0px 0px 0px 20px;
 }
 
@@ -127,6 +137,7 @@
     
 }
 
-.notice {
+#flash_notice {
     color: green;
+	text-align:center;
 }

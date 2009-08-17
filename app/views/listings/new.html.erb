@@ -1,7 +1,7 @@
-
-    <h2>Write a new Listing</h2>  
+<div id ="listings">
+	<h2>Write a new Listing</h2>  
       
-    <% form_for @listing do |listing_form| %>  
+    <% remote_form_for @listing, :loading => "Element.hide('submit_button'); Element.show('listing_loading');" do |listing_form| %>  
      <p>     
        <label for="title" class="textInput">Title:</label><br /> 
        <%= listing_form.text_field :title, :class => 'text_field' %>  
@@ -11,5 +11,7 @@
        <%= listing_form.text_area :body, :class => 'text_area' %>  
      </p>  
      <%= listing_form.hidden_field :user_id, :value => current_user[:id] %>
-   <%= submit_tag 'Create Listing', :class => 'submit_button'%>  
-   <% end %> 
+   <%= submit_tag 'Create Listing', :class => 'submit_button', :id =>"create_listing"%>
+   <%= image_tag 'spinner.gif', :style => 'display: none', :id => 'listing_loading' %>  
+   <% end %>
+</div> 

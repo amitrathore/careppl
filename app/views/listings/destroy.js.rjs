@@ -1,0 +1,5 @@
+page[:listings].replace_html :partial => '/listings/listings', :object => @listings
+page.replace_html :flash_notice, flash[:notice]
+page[:flash_notice].visual_effect :highlight, :duration => 3.5
+flash.discard
+

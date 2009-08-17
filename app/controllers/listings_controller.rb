@@ -3,24 +3,32 @@ class ListingsController < ApplicationController
   
   def index
     @listings = Listing.find(:all, :conditions => {:user_id => current_user.id}, :order => 'created_at DESC') 
-    @listings = Listing.paginate(@listings, :page => params[:page], :order => 'updated_at DESC')
+    #@listings = current_user.listings
+    @listings = @listings.paginate(:page => params[:page], :per_page => 10, :order => 'updated_at DESC')
+
   end
  
   def all_listings
     @listings =  Listing.find(:all) - Listing.find(:all, :conditions => {:user_id => current_user.id}) 
-    @listings = Listing.paginate(@listings, :page => params[:page], :order => 'updated_at DESC')
+    @listings = Listing.paginate(@listings, :page => params[:page],:per_page => 10, :order => 'updated_at DESC')
+    render :layout => false
   end
  
   def new
     @listing = Listing.new
+    render :layout => false
   end
   
   def create
     @listing = Listing.new(params[:listing])
-    #@listing[:user_id] = current_user.id  #doing this directly in the form using hidden field
     if @listing.save
+      @listings = current_user.listings
+      @listings = @listings.paginate(:page => params[:page], :order => 'updated_at DESC') 
       flash[:notice] = 'Listing was successfully created!'
-      redirect_to listings_url
+      respond_to do |format|
+        format.html { redirect_to listings_url }
+        format.js
+      end
     else
       render :action => :new
     end
@@ -59,8 +67,14 @@ class ListingsController < ApplicationController
        comment.destroy
     end
     @listing.destroy
+    @listings = Listing.find(:all, :conditions => {:user_id => current_user.id}, :order => 'created_at DESC')
+    @listings = @listings.paginate(:page => params[:page], :per_page => 10, :order => 'updated_at DESC')
     flash[:notice] = 'Listing was deleted!'
-    redirect_to listings_url
+    respond_to do |format|
+      format.html { redirect_to listings_url }
+      format.js { render 'destroy.js.rjs' }
+    end
+    
   end
   
   def search
@@ -74,3 +88,4 @@ class ListingsController < ApplicationController
   end
   
 end
+

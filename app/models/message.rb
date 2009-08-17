@@ -1,3 +1,3 @@
 class Message < ActiveRecord::Base
-  belongs :user
+  belongs_to :user
 end

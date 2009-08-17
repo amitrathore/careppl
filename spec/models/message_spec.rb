@@ -6,8 +6,4 @@ describe Message do
       
     }
   end
-
-  it "should create a new instance given valid attributes" do
-    Message.create!(@valid_attributes)
-  end
 end
